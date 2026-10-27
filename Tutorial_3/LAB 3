@@ -1,0 +1,240 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.lab_3;
+
+/**
+ *
+ * @author LENOVO
+ */
+
+//Lab Quest At the Most Bottom Part
+import java.util.Scanner;
+import java.util.Random;
+public class MAINFINAL{
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
+        // Question 1  
+        int result = 0;
+        System.out.print("Enter two integer number: ");
+        int number = sc.nextInt();
+        int number2 = sc.nextInt();
+        System.out.println("");
+        System.out.print("Enter the operand: ");
+        char mode = sc.next().charAt(0);
+        switch(mode){
+            case '+':
+                result = number + number2;
+                break;
+            case '-':
+                result = number - number2;
+                break;
+            case '*':
+            result = number * number2;
+            break;
+            case '/':
+                result = number / number2;
+                break;
+            case '%':
+                result = number % number2;
+                break;
+            default:
+                System.out.println("Not in the list");
+                break;
+
+        }
+        
+        System.out.printf("%d %s %d = %d",number,mode,number2,result);
+        
+        // Question 2
+        int randomNum = rand.nextInt(0,6);
+        String[] Numbers = {"zero","one","two","three","four","five"};
+        System.out.printf("%d is %s",randomNum,Numbers[randomNum]);
+        switch (randomNum){
+            case 0:
+                System.out.printf("%d is zero",randomNum);
+                break;
+            case 1:
+                System.out.printf("%d is one",randomNum);
+                break;
+            case 2:
+                System.out.printf("%d is two",randomNum);
+                break;
+            case 3:
+                System.out.printf("%d is three",randomNum);
+                break;
+            case 4:
+                System.out.printf("%d is four",randomNum);
+                break;
+            default:
+                System.out.printf("%d is five",randomNum);
+                break;
+                
+        }
+        // Question 3
+        System.out.println("Input your sales:");
+        int sales = sc.nextInt();
+        double com = 0;
+        if (sales <= 100){
+            com = sales * 0.05;
+        }else if (sales <= 500){
+            com = sales * 0.075;
+        }else if (sales <=1000){
+            com = sales * 0.1;
+        }else{
+            com = sales * 0.125;
+        }
+        System.out.printf("Final commission is %.2f", com);
+        
+        // Question 4
+        int p1 = (int)(Math.random()*11+2);
+        int p2 = (int)(Math.random()*11+2);
+        System.out.printf("Player %d wins \n",(p1>p2)?1:2);
+        int i = 1;
+        int maxDice2 = 0;
+        int maxDice1 = 0;
+        while(i<=2){
+            int dice1 = rand.nextInt(6)+1;
+            int dice2 = rand.nextInt(6)+1;
+            if (dice1 >= dice2){
+                maxDice1 = dice1;
+            }else{
+                maxDice1 = dice2;
+            }
+            i++;
+        }
+        i = 1;
+        while(i<=2){
+            int dice1 = rand.nextInt(6)+1;
+            int dice2 = rand.nextInt(6)+1;
+            if (dice1 >= dice2){
+                maxDice2 = dice1;
+            }else{
+                maxDice2 = dice2;
+            }
+            i++;
+        }
+        System.out.println("Player 1 result:" + maxDice1);
+        System.out.println("Player 2 result:" + maxDice2);
+        if (maxDice1 > maxDice2){
+            System.out.println("Player 1 Wins");
+        }else if (maxDice1 < maxDice2){
+            System.out.println("Player 2 Wins");
+        }else{
+            System.out.println("Tie");
+        }
+        
+        // Question 5
+        System.out.print("Enter a: ");
+        int a = sc.nextInt();
+        
+        System.out.print("Enter b: ");
+        int b = sc.nextInt();
+        
+        System.out.print("Enter c: ");
+        int c = sc.nextInt();
+        
+        System.out.print("Enter d: ");
+        int d = sc.nextInt();
+        
+        System.out.print("Enter e: ");
+        int e = sc.nextInt();
+        
+        System.out.print("Enter f: ");
+        int f = sc.nextInt();
+        
+        if(a*d-b*c == 0){
+            System.out.println("The equation has no solution");
+        }else{
+            double x = (e*d-b*f)/(double)(a*d-b*c);
+            double y = (a*f - e*c) / (double)(a*d - b*c);
+            System.out.printf("x is %f, y is %f",x,y);
+        }
+        
+        // Question 6
+        System.out.print("Enter radius: ");
+        double radius = sc.nextInt();
+        System.out.print("Enter coordX: ");
+        int coordX = sc.nextInt();
+        System.out.print("Enter coordY: ");
+        int coordY = sc.nextInt();
+        if(Math.pow(coordX,2) + Math.pow(coordY, 2) <= Math.pow(radius, 2))
+            System.out.println("No, not inside the circle centred at (0,0)");
+        else
+            System.out.println("Yes, inside the circle centred at (0,0)");
+        
+        
+        
+        
+        // Extra Question 1
+        
+        try (Scanner scanner = new Scanner(System.in)) {
+            System.out.print("Enter two number: ");
+            double num1 = scanner.nextDouble();
+            double num2 = scanner.nextDouble();
+            System.out.print("Enter the operator: ");
+            char operator = scanner.next().charAt(0);
+            double result2 = switch (operator) {
+                case '+' -> num1 + num2;
+                case '-' -> num1 - num2;
+                case '*' -> num1 * num2;
+                case '/' -> num1 / num2;
+                case '%' -> num1 % num2;
+                default -> 0;
+            };
+            System.out.printf("%f %c %f is %f", num1, operator, num2, result2);
+        }
+        
+        // Extra Question 2
+            System.out.println("""
+                Crammer's rule:
+                    ax + by = e, cx + dy = f
+                    x = (ed - bf) / (ad - bc)
+                    y = (af - ec) / (ad - bc)
+                """);
+            double[] val = new double[6];
+            for (i = 0; i < 6; i++) {
+                System.out.printf("Enter the value of %c : ", i + 'a');
+                val[i] = sc.nextDouble();
+            }
+            double a1 = val[0], b1 = val[1], c1 = val[2], d1 = val[3], e1 = val[4], f1 = val[5];
+            double denominator = a1 * d1 - b1 * c1;
+            if (Math.abs(denominator) < 1e-10) {
+                System.out.println("no solution");
+            } else {
+                System.out.printf("x = %f, y = %f%n",
+                    (e1 * d1 - b1 * f1) / denominator,
+                    (a1 * f1 - e1 * c1) / denominator
+                );
+            }
+            
+            
+            
+            
+            // Lab Quest
+            int[][] points = new int[3][2];
+            for(i=0;i<3;i++){
+                for(int j=0;j<2;j++){
+                    int element = rand.nextInt(0,101);
+                    points[i][j] = element;
+                }
+            }
+            int same = 0;
+            System.out.println("points[");
+            for(i=0;i<3;i++){
+                if(points[i][0] == points[i][1]){
+                    same++;
+                }
+                System.out.printf("[%d,%d]",points[i][0],points[i][1]);
+            }
+            System.out.print("]");
+            if (same == 3){
+                System.out.println("False");
+            }else{
+                System.out.print("True");
+            }
+            
+        }
+    }
